@@ -1,0 +1,11 @@
+[
+ {"id":"v01","bolum":"Giriş","metin":"Kocaeli her sabah yola çıkıyor. Fabrikalarıyla, mahalleleriyle, kıyılarıyla, hareket hâlinde bir şehir. Bu hareketin merkezinde, gün boyu aynı güzergâhlarda düzenli seferler yapan otobüsler var."},
+ {"id":"v02","bolum":"Fikir","metin":"Peki bu otobüsler, yolcularla birlikte şehrin çevresine dair veriyi de taşısaydı? Bu sunumda, otobüslerin hareketli ölçüm noktalarına nasıl dönüşebileceğini adım adım anlatıyoruz."},
+ {"id":"v03","bolum":"Neler ölçülür?","metin":"Önerilen sistemde otobüslere; partikül madde, sıcaklık ve nem, gaz yoğunluğu, ses seviyesi ve yol titreşimini ölçebilen sensörler yerleştirilir. Sensörler, aracın kendi egzozunun ve motor sesinin etkisini en aza indirecek noktalara konumlandırılır. Montaj tasarımı ise teknik onaya tabidir."},
+ {"id":"v04","bolum":"Veri nasıl akar?","metin":"Her ölçüm, konum ve zaman bilgisiyle eşleştirilir. Araç üzerindeki veri birimi ölçümleri kontrol eder, paketler ve mobil ağ üzerinden merkezi platforma gönderir. Bağlantı kesilirse veriler araçta saklanır, bağlantı geri geldiğinde aktarılır."},
+ {"id":"v05","bolum":"Yapay zekâ ne yapar?","metin":"Platformda veriler kalite kontrolünden geçer ve haritaya işlenir. Yapay zekâ destekli analizler, sensörlerin kalibrasyonuna yardımcı olur; olağan dışı değerleri, tekrar eden örüntüleri ve yoğunlaşan bölgeleri öne çıkarır."},
+ {"id":"v06","bolum":"Kullanım senaryoları","metin":"Bir bölgede partikül madde değerleri yükseldiğinde, bölge inceleme için işaretlenir. Şüpheli bir gaz ölçümü, konumuyla birlikte ilgili uzman birime doğrulama için iletilir. Aynı noktada, farklı seferlerde tekrarlanan titreşimler ise olası yol bozukluğu olarak önceliklendirilir."},
+ {"id":"v07","bolum":"Doğrulama","metin":"Sistem karar vermez; karar verenlere doğru konumda, zamanında bilgi sunar. Son değerlendirme her zaman uzman ekiplerindir."},
+ {"id":"v08","bolum":"Pilot","metin":"Yaklaşım, küçük bir pilotla başlar: önce hazırlık ve kalibrasyon, ardından birkaç otobüs ve birkaç hatla saha denemesi, en sonunda değerlendirme ve karar. Sabit ölçüm istasyonlarının yerine geçmez; onları tamamlar."},
+ {"id":"v09","bolum":"Kapanış","metin":"Her yolculuk, şehir için yeni bir veri."}
+]

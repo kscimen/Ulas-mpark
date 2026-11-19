@@ -15,6 +15,7 @@
 | 5 | [`05_kurgu_post_produksiyon.md`](05_kurgu_post_produksiyon.md) | Kurgu, müzik, SFX, renk, yazı, altyazı, kapanış kartı, çıktı ve QC listesi |
 | 6 | [`06_yonetici_ozeti.md`](06_yonetici_ozeti.md) | Yöneticiye sunulacak 1 sayfalık proje özeti |
 | 7 | [`07_eksik_varliklar.md`](07_eksik_varliklar.md) | Üretime geçmek için gereken dosyalar ve kullanıcıdan istenenler |
+| 8 | [`video/`](video/README.md) | **Üretilmiş eğitici sunum videosu**, kaynak betikler, logo, anlatım metni ve profesyonel sesle değiştirme talimatı |
 | — | [`referanslar/`](referanslar/) | İki kullanıcı videosundan kareler ve Instagram profil ekran görüntüsü |
 
 ---
