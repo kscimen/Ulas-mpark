@@ -14,12 +14,13 @@ def sure(path):
                                           '-of', 'csv=p=0', path]).decode().strip())
 
 CARD = 2.8
+CARD2 = 3.6
 plan = [
     ('intro', None, 5.0, 0, 0),
     ('acilis', 'v01', None, 0.6, 1.0),
     ('kart', None, CARD, 0, 0, {'no': '01', 'baslik': 'Fikir', 'alt': 'Otobüsler neden veri toplayabilir?'}),
     ('fikir', 'v02', None, 0.4, 1.2),
-    ('kart', None, CARD, 0, 0, {'no': '02', 'baslik': 'Neler ölçülür?', 'alt': 'Sensör katmanı'}),
+    ('kart', None, CARD2, 0, 0, {'no': '02', 'baslik': 'Neler ölçülür?', 'alt': 'Sensör katmanı'}),
     ('sensor', 'v03', None, 0.5, 1.4),
     ('kart', None, CARD, 0, 0, {'no': '03', 'baslik': 'Veri nasıl akar?', 'alt': 'Araçtan merkezi platforma'}),
     ('veri', 'v04', None, 0.5, 1.2),

@@ -64,6 +64,24 @@ function setImg(img,src){ if(img.dataset.src!==src){img.dataset.src=src; img.src
 const fr=(dir,i)=>`${KARE}/${dir}/${pad(i)}.jpg`;
 const LOGO=`${ASSET}/up_logo_beyaz.png`;
 
+
+// ---------- ikon seti (32x32 çizgi ikonlar) ----------
+const IK={
+ pm:  `<circle cx="9" cy="10" r="3.2"/><circle cx="20" cy="7" r="2"/><circle cx="24" cy="17" r="3.6"/><circle cx="12" cy="21" r="2.4"/><circle cx="18" cy="26" r="1.6"/><circle cx="6" cy="27" r="1.4"/>`,
+ th:  `<path d="M12 5 a3 3 0 0 1 6 0 v13 a6 6 0 1 1 -6 0 Z"/><circle cx="15" cy="23" r="2.6" class="f"/><path d="M15 21 V11"/><path d="M26 9 c0 0 -4 4.6 -4 7.2 a4 4 0 0 0 8 0 c0 -2.6 -4 -7.2 -4 -7.2 Z"/>`,
+ gaz: `<circle cx="16" cy="16" r="4.4"/><circle cx="6" cy="7" r="2.6"/><circle cx="26" cy="7" r="2.6"/><circle cx="6" cy="25" r="2.6"/><circle cx="26" cy="25" r="2.6"/><path d="M12.6 12.8 L8 9 M19.4 12.8 L24 9 M12.6 19.2 L8 23 M19.4 19.2 L24 23"/>`,
+ ses: `<path d="M4 12 H9 L16 6 V26 L9 20 H4 Z"/><path d="M20 11.5 a6 6 0 0 1 0 9"/><path d="M23.5 8 a11 11 0 0 1 0 16"/>`,
+ tit: `<path d="M2 16 H7 L9.5 8 L13 24 L16.5 5 L20 27 L23 11 L25.5 16 H30"/>`,
+ gnss:`<path d="M16 29 C 9 20 7 16.5 7 13 a9 9 0 0 1 18 0 c0 3.5 -2 7 -9 16 Z"/><circle cx="16" cy="13" r="3.4"/>`,
+ gw:  `<rect x="8" y="8" width="16" height="16" rx="2.5"/><rect x="12.5" y="12.5" width="7" height="7" rx="1" class="f"/><path d="M12 4 v4 M16 4 v4 M20 4 v4 M12 24 v4 M16 24 v4 M20 24 v4 M4 12 h4 M4 16 h4 M4 20 h4 M24 12 h4 M24 16 h4 M24 20 h4"/>`,
+ ag:  `<path d="M16 28 V14"/><circle cx="16" cy="12" r="2.4" class="f"/><path d="M10.5 6.5 a8 8 0 0 0 0 11 M21.5 6.5 a8 8 0 0 1 0 11 M6.5 3 a13 13 0 0 0 0 18 M25.5 3 a13 13 0 0 1 0 18"/>`,
+ plat:`<rect x="5" y="5" width="22" height="7" rx="2"/><rect x="5" y="14" width="22" height="7" rx="2"/><path d="M9 8.5 h2 M9 17.5 h2 M8 26 h16 M16 21 v5"/>`,
+ sens:`<circle cx="16" cy="16" r="3.4" class="f"/><path d="M10 10 a8.5 8.5 0 0 0 0 12 M22 10 a8.5 8.5 0 0 1 0 12 M6 6 a14 14 0 0 0 0 20 M26 6 a14 14 0 0 1 0 20"/>`,
+ uzman:`<circle cx="16" cy="10" r="5"/><path d="M6 28 c0 -6 4.5 -10 10 -10 s10 4 10 10"/><path d="M20.5 24 l2.5 2.5 l5 -5"/>`,
+};
+const ikon=(k,size=40,renk='#5FD4C8')=>`<svg width="${size}" height="${size}" viewBox="0 0 32 32" fill="none" stroke="${renk}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><style>.f{fill:${renk}}</style>${IK[k]}</svg>`;
+const ikonG=(k,x,y,size=40,renk='#5FD4C8')=>`<g transform="translate(${x},${y}) scale(${size/32})" fill="none" stroke="${renk}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${IK[k].replace(/class="f"/g,`fill="${renk}"`)}</g>`;
+
 // ---------- sahne fabrikaları ----------
 const builders={};
 
@@ -96,12 +114,15 @@ builders.kart=(sc)=>{
     <div class="abs k-c" style="left:190px;top:684px;width:0;height:4px" class="grad"></div>
     <div class="abs alt k-a" style="left:188px;top:712px;font-size:34px">${sc.alt}</div>
     <div class="etiket-sol">Bölüm ${sc.no} / 06</div>
+    ${sc.no==='02'?`<div class="abs k-ik" style="left:190px;top:820px;display:flex;gap:26px">${[['pm','Partikül'],['th','Sıcaklık · Nem'],['gaz','Gaz'],['ses','Ses'],['tit','Titreşim'],['gnss','Konum'],['gw','Veri birimi']].map(([k,l])=>
+      `<div class="kik" style="width:150px;text-align:center"><div style="width:96px;height:96px;margin:0 auto 12px;border-radius:22px;background:rgba(95,212,200,.10);border:1.5px solid rgba(95,212,200,.45);display:flex;align-items:center;justify-content:center">${ikon(k,58)}</div><div style="font-size:21px;color:#dfe8f7">${l}</div></div>`).join('')}</div>`:''}
   </div>`); stage.appendChild(el);
   const n=el.querySelector('.k-n'),b=el.querySelector('.k-b'),c=el.querySelector('.k-c'),a=el.querySelector('.k-a');
   c.style.background='linear-gradient(90deg,#28439A,#2CA9E1)';
   return (lt)=>{
     const p=eo(prog(lt,.05,.7)); n.style.opacity=p; n.style.transform=`translateX(${(1-p)*-60}px)`;
     show(b,prog(lt,.25,.7),40); c.style.width=(420*eo(prog(lt,.5,.8)))+'px'; show(a,prog(lt,.65,.7));
+    [...el.querySelectorAll('.kik')].forEach((d,i)=>show(d,prog(lt,.8+i*.12,.45),18));
   };
 };
 
@@ -173,13 +194,13 @@ builders.fikir=(sc)=>{
 builders.sensor=(sc)=>{
   // nötr, markasız teknik otobüs çizimi + sensörler
   const S=[ // id, sensör x,y (svg), etiket x,y, başlık, detay, olay
-    ['pm',  520,292, 300,110,'Partikül madde','PM2.5 · PM10','pm'],
-    ['th',  600,292, 640,110,'Sıcaklık · Nem','Radyasyon kalkanlı','th'],
-    ['gaz', 410,300, 40,250,'Gaz yoğunluğu','CH₄ · ön-üst emiş','gaz'],
-    ['ses', 470,470, 40,560,'Ses seviyesi','Yalnız dB(A) · kayıt yok','ses'],
+    ['pm',  520,292, 260,110,'Partikül madde','PM2.5 · PM10','pm'],
+    ['th',  600,292, 630,110,'Sıcaklık · Nem','Radyasyon kalkanlı','th'],
+    ['gaz', 410,300, 10,250,'Gaz yoğunluğu','CH₄ · ön-üst emiş','gaz'],
+    ['ses', 470,470, 10,560,'Ses seviyesi','Yalnız dB(A) · kayıt yok','ses'],
     ['tit', 560,690, 300,760,'Yol titreşimi','Şasiye bağlı ivmeölçer','tit'],
-    ['gnss',900,286, 990,110,'Konum · Zaman','GNSS + mobil anten','gnss'],
-    ['gw',  760,520, 1040,760,'Araç içi veri birimi','Kontrol · paketleme · yerel kayıt','gnss']];
+    ['gnss',900,286, 1000,110,'Konum · Zaman','GNSS + mobil anten','gnss'],
+    ['gw',  760,520, 1010,760,'Araç içi veri birimi','Kontrol · paketleme · yerel kayıt','gnss']];
   const el=$(`<div class="scene">
     <div class="abs alt" style="left:120px;top:70px;font-size:24px;letter-spacing:.08em;text-transform:uppercase">Bölüm 02 · Sensör katmanı</div>
     <svg class="abs" width="1700" height="900" viewBox="0 0 1500 900" style="left:110px;top:90px">
@@ -197,12 +218,14 @@ builders.sensor=(sc)=>{
       <g class="egz" opacity="0"><ellipse cx="1430" cy="650" rx="70" ry="34" fill="#A9BCE0" fill-opacity=".18"/>
         <text x="1342" y="600" fill="#A9BCE0" font-size="22">Egzoz · motor bölgesi</text></g>
       ${S.map(s=>`<g class="sn" data-id="${s[0]}" opacity="0">
-        <line x1="${s[1]}" y1="${s[2]}" x2="${s[3]+120}" y2="${s[4]+70}" stroke="#5FD4C8" stroke-width="2" stroke-dasharray="6 6"/>
+        <line x1="${s[1]}" y1="${s[2]}" x2="${s[3]+165}" y2="${s[4]+(s[4]<300?88:0)}" stroke="#5FD4C8" stroke-width="2" stroke-dasharray="6 6"/>
         <circle class="pu" cx="${s[1]}" cy="${s[2]}" r="16" fill="none" stroke="#5FD4C8" stroke-width="3"/>
         <circle cx="${s[1]}" cy="${s[2]}" r="9" fill="#5FD4C8"/>
-        <rect x="${s[3]}" y="${s[4]}" width="290" height="88" rx="12" fill="#0E2155" stroke="rgba(95,212,200,.55)" stroke-width="1.5"/>
-        <text x="${s[3]+18}" y="${s[4]+38}" fill="#fff" font-size="26" font-weight="700">${s[5]}</text>
-        <text x="${s[3]+18}" y="${s[4]+70}" fill="#A9BCE0" font-size="20">${s[6]}</text></g>`).join('')}
+        <rect x="${s[3]}" y="${s[4]}" width="330" height="88" rx="12" fill="#0E2155" stroke="rgba(95,212,200,.55)" stroke-width="1.5"/>
+        <rect x="${s[3]+12}" y="${s[4]+14}" width="60" height="60" rx="10" fill="rgba(95,212,200,.12)"/>
+        ${ikonG(s[0],s[3]+20,s[4]+22,44)}
+        <text x="${s[3]+86}" y="${s[4]+38}" fill="#fff" font-size="25" font-weight="700">${s[5]}</text>
+        <text x="${s[3]+86}" y="${s[4]+70}" fill="#A9BCE0" font-size="19">${s[6]}</text></g>`).join('')}
     </svg>
     <div class="abs s-n" style="left:120px;top:110px;font-size:22px;color:#F2B544">Konsept yerleşim — montaj tasarımı teknik onaya tabidir.</div>
     <img src="${LOGO}" class="ust-logo"><div class="etiket-sol" style="bottom:auto;top:1000px;display:none"></div>
@@ -219,7 +242,7 @@ builders.sensor=(sc)=>{
 };
 
 builders.veri=(sc)=>{
-  const N=[['Sensörler','Ölçüm',110],['Araç içi veri birimi','Kontrol · paketleme',560],['Mobil ağ','Şifreli bağlantı',1010],['Merkezi platform','Saklama · kalite kontrol',1460]];
+  const N=[['Sensörler','Ölçüm',110,'sens'],['Araç içi veri birimi','Kontrol · paketleme',560,'gw'],['Mobil ağ','Şifreli bağlantı',1010,'ag'],['Merkezi platform','Saklama · kalite kontrol',1460,'plat']];
   const el=$(`<div class="scene">
     <div class="abs alt" style="left:120px;top:70px;font-size:24px;letter-spacing:.08em;text-transform:uppercase">Bölüm 03 · Veri akışı</div>
     <div class="abs v-h" style="left:120px;top:120px;width:1500px"><div class="bas" style="font-size:52px">Her ölçüm, konum ve zaman bilgisiyle sisteme aktarılır.</div></div>
@@ -230,14 +253,15 @@ builders.veri=(sc)=>{
         <path d="M893 508 L917 532 M917 508 L893 532" stroke="#F2B544" stroke-width="4"/>
         <text x="905" y="590" text-anchor="middle" fill="#F2B544" font-size="24" font-weight="600">Bağlantı yok</text></g>
     </svg>
-    ${N.map((n,i)=>`<div class="kutu v-n" style="left:${n[2]}px;top:440px;width:350px;height:160px;padding:30px 28px">
+    ${N.map((n,i)=>`<div class="kutu v-n" style="left:${n[2]}px;top:400px;width:350px;height:240px;padding:26px 28px">
+       <div style="margin-bottom:16px">${ikon(n[3],58)}</div>
        <div style="font-size:30px;font-weight:700">${n[0]}</div><div class="alt" style="font-size:22px;margin-top:10px">${n[1]}</div></div>`).join('')}
-    <div class="abs v-p" style="left:110px;top:660px;display:flex;gap:12px">
+    <div class="abs v-p" style="left:110px;top:680px;display:flex;gap:12px">
       <span class="chip" style="font-size:22px">Ölçüm</span><span class="chip" style="font-size:22px">+ Konum</span><span class="chip" style="font-size:22px">+ Zaman</span></div>
-    <div class="abs v-b" style="left:560px;top:660px;width:350px">
+    <div class="abs v-b" style="left:560px;top:680px;width:350px">
       <div class="alt" style="font-size:22px;margin-bottom:10px">Yerel kayıt (tampon)</div>
       <div style="height:22px;border:1.5px solid var(--cizgi);border-radius:6px;overflow:hidden"><div class="v-bar" style="height:100%;width:0;background:#F2B544"></div></div></div>
-    <div class="abs alt v-y" style="left:1460px;top:660px;width:360px;font-size:22px">Yakın gerçek zamanlı aktarım</div>
+    <div class="abs alt v-y" style="left:1460px;top:680px;width:360px;font-size:22px">Yakın gerçek zamanlı aktarım</div>
     <img src="${LOGO}" class="ust-logo"><div class="etiket-sol">Konsept görselleştirme</div>
   </div>`); stage.appendChild(el);
   const nodes=[...el.querySelectorAll('.v-n')], cns=[...el.querySelectorAll('.cn')], pks=[...el.querySelectorAll('.pk')];
@@ -326,9 +350,9 @@ builders.yz=(sc)=>{
 
 builders.senaryo=(sc)=>{
   const P=[
-    {k:'a',seg:[60,213],ust:'A · Hava kalitesi',k2:'Yüksek partikül yoğunluğu',k3:'Bölge haritada işaretlenir.',k4:'→ İnceleme önerisi'},
-    {k:'b',seg:[180,339],ust:'B · Şüpheli gaz ölçümü',k2:'Konum ve zaman iletildi',k3:'Ölçüm tek başına teşhis değildir.',k4:'→ Uzman doğrulaması'},
-    {k:'c',seg:[190,426],ust:'C · Yol titreşimi',k2:'Aynı noktada 3 farklı geçiş',k3:'Tekrar eden sinyal önceliklendirilir.',k4:'→ Saha kontrolü önerilir'}];
+    {k:'a',ik:'pm',seg:[60,213],ust:'A · Hava kalitesi',k2:'Yüksek partikül yoğunluğu',k3:'Bölge haritada işaretlenir.',k4:'→ İnceleme önerisi'},
+    {k:'b',ik:'gaz',seg:[180,339],ust:'B · Şüpheli gaz ölçümü',k2:'Konum ve zaman iletildi',k3:'Ölçüm tek başına teşhis değildir.',k4:'→ Uzman doğrulaması'},
+    {k:'c',ik:'tit',seg:[190,426],ust:'C · Yol titreşimi',k2:'Aynı noktada 3 farklı geçiş',k3:'Tekrar eden sinyal önceliklendirilir.',k4:'→ Saha kontrolü önerilir'}];
   const el=$(`<div class="scene">
     <div class="panel"><img class="pi"><div class="etiket">Gerçek görüntü · Kocaeli</div></div>
     <div class="sag">
@@ -341,7 +365,7 @@ builders.senaryo=(sc)=>{
         <g class="sC" opacity="0">${[0,1,2].map(i=>`<g class="w" opacity="0"><path d="M${560+i*0} ${612-i*44} q 15 -20 30 0 t 30 0 t 30 0 t 30 0" fill="none" stroke="#5FD4C8" stroke-width="4"/>
            <text x="${690}" y="${618-i*44}" fill="#A9BCE0" font-size="20">${i+1}. sefer</text></g>`).join('')}
            <circle class="cC" cx="620" cy="612" r="14" fill="#5FD4C8"/></g>`)}</div>
-      <div class="kart s-k" style="left:720px;top:600px"><div class="k1"></div><div class="k2"></div><div class="k3"></div><div class="k4"></div></div>
+      <div class="kart s-k" style="left:720px;top:600px"><div class="kik" style="position:absolute;right:24px;top:22px"></div><div class="k1"></div><div class="k2"></div><div class="k3"></div><div class="k4"></div></div>
       <div class="abs s-f" style="left:70px;top:845px;font-size:30px;font-weight:600">Erken farkındalık · Doğru konum · Hızlı değerlendirme</div>
     </div>
     <img src="${LOGO}" class="ust-logo">
@@ -356,7 +380,7 @@ builders.senaryo=(sc)=>{
     if(i===1){const q=(t*1.2)%1; const pb=svg.querySelector('.pB'); pb.setAttribute('r',14+26*q); pb.setAttribute('stroke-opacity',1-q);
       const lb=svg.querySelector('.lB'); const L=lb.__L||(lb.__L=lb.getTotalLength()); lb.style.strokeDashoffset=0; lb.setAttribute('opacity',eo(prog(lt2,1.4,.6)));}
     if(i===2){[...svg.querySelectorAll('.w')].forEach((w,j)=>w.setAttribute('opacity',eo(prog(lt2,.3+j*1.1,.4)))); svg.querySelector('.cC').setAttribute('fill',lt2>3.6?'#F2B544':'#5FD4C8');}
-    kart.querySelector('.k1').textContent=p.ust; kart.querySelector('.k2').textContent=p.k2; kart.querySelector('.k3').textContent=p.k3; kart.querySelector('.k4').textContent=p.k4;
+    if(kart.dataset.ik!==p.ik){kart.dataset.ik=p.ik; kart.querySelector('.kik').innerHTML=ikon(p.ik,54,i==0?'#F2B544':i==1?'#F2B544':'#5FD4C8');} kart.querySelector('.k1').textContent=p.ust; kart.querySelector('.k2').textContent=p.k2; kart.querySelector('.k3').textContent=p.k3; kart.querySelector('.k4').textContent=p.k4;
     show(kart,prog(lt2,i==2?3.4:1.2,.5),16); kart.style.opacity*=1-eo(prog(t,tb[i+1]-.3,.3));
     show(el.querySelector('.s-f'),prog(t,sc.start+sc.dur-3.2,.6),10);
   };
@@ -371,7 +395,7 @@ builders.dogrulama=(sc)=>{
       <circle class="mv" r="10" fill="#5FD4C8"/>
       ${D.map((d,i)=>{const a=-Math.PI/2+i*2*Math.PI/5, x=cx+R*Math.cos(a), y=cy+R*Math.sin(a); const big=i===3;
         return `<g class="dn" opacity="0"><circle cx="${x}" cy="${y}" r="${big?62:48}" fill="${big?'#28439A':'#12265C'}" stroke="${big?'#F2B544':'#2CA9E1'}" stroke-width="${big?4:2}"/>
-          <text x="${x}" y="${y+8}" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">${i+1}</text>
+          ${big?ikonG('uzman',x-24,y-24,48,'#F2B544'):`<text x="${x}" y="${y+8}" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">${i+1}</text>`}
           <text x="${x+(Math.cos(a)>0.2?75:Math.cos(a)<-0.2?-75:0)}" y="${y+(Math.abs(Math.cos(a))<=0.2?(Math.sin(a)<0?-70:95):10)}" text-anchor="${Math.cos(a)>0.2?'start':Math.cos(a)<-0.2?'end':'middle'}" fill="${big?'#F2B544':'#fff'}" font-size="28" font-weight="600">${d}</text></g>`}).join('')}
     </svg>
     <div class="abs d-t" style="left:1220px;top:330px;width:620px"><div class="bas" style="font-size:52px">Sistem karar vermez;<br>karar verenlere bilgi sunar.</div></div>
