@@ -1,0 +1,84 @@
+1
+00:00:05,600 --> 00:00:07,566
+Kocaeli her sabah yola çıkıyor.
+
+2
+00:00:07,616 --> 00:00:12,184
+Fabrikalarıyla, mahalleleriyle, kıyılarıyla, hareket hâlinde bir şehir.
+
+3
+00:00:12,234 --> 00:00:18,037
+Bu hareketin merkezinde, gün boyu aynı güzergâhlarda düzenli seferler yapan otobüsler var.
+
+4
+00:00:22,287 --> 00:00:26,774
+Peki bu otobüsler, yolcularla birlikte şehrin çevresine dair veriyi de taşısaydı?
+
+5
+00:00:26,824 --> 00:00:32,207
+Bu sunumda, otobüslerin hareketli ölçüm noktalarına nasıl dönüşebileceğini adım adım anlatıyoruz.
+
+6
+00:00:37,557 --> 00:00:46,537
+Önerilen sistemde otobüslere; partikül madde, sıcaklık ve nem, gaz yoğunluğu, ses seviyesi ve yol titreşimini ölçebilen sensörler yerleştirilir.
+
+7
+00:00:46,587 --> 00:00:52,995
+Sensörler, aracın kendi egzozunun ve motor sesinin etkisini en aza indirecek noktalara konumlandırılır.
+
+8
+00:00:53,045 --> 00:00:55,566
+Montaj tasarımı ise teknik onaya tabidir.
+
+9
+00:01:00,316 --> 00:01:03,277
+Her ölçüm, konum ve zaman bilgisiyle eşleştirilir.
+
+10
+00:01:03,327 --> 00:01:09,900
+Araç üzerindeki veri birimi ölçümleri kontrol eder, paketler ve mobil ağ üzerinden merkezi platforma gönderir.
+
+11
+00:01:09,950 --> 00:01:14,657
+Bağlantı kesilirse veriler araçta saklanır, bağlantı geri geldiğinde aktarılır.
+
+12
+00:01:19,207 --> 00:01:22,837
+Platformda veriler kalite kontrolünden geçer ve haritaya işlenir.
+
+13
+00:01:22,887 --> 00:01:31,612
+Yapay zekâ destekli analizler, sensörlerin kalibrasyonuna yardımcı olur; olağan dışı değerleri, tekrar eden örüntüleri ve yoğunlaşan bölgeleri öne çıkarır.
+
+14
+00:01:36,362 --> 00:01:41,374
+Bir bölgede partikül madde değerleri yükseldiğinde, bölge inceleme için işaretlenir.
+
+15
+00:01:41,424 --> 00:01:46,616
+Şüpheli bir gaz ölçümü, konumuyla birlikte ilgili uzman birime doğrulama için iletilir.
+
+16
+00:01:46,666 --> 00:01:52,943
+Aynı noktada, farklı seferlerde tekrarlanan titreşimler ise olası yol bozukluğu olarak önceliklendirilir.
+
+17
+00:01:57,393 --> 00:02:02,007
+Sistem karar vermez; karar verenlere doğru konumda, zamanında bilgi sunar.
+
+18
+00:02:02,057 --> 00:02:04,968
+Son değerlendirme her zaman uzman ekiplerindir.
+
+19
+00:02:06,118 --> 00:02:15,568
+Yaklaşım, küçük bir pilotla başlar: önce hazırlık ve kalibrasyon, ardından birkaç otobüs ve birkaç hatla saha denemesi, en sonunda değerlendirme ve karar.
+
+20
+00:02:15,618 --> 00:02:19,208
+Sabit ölçüm istasyonlarının yerine geçmez; onları tamamlar.
+
+21
+00:02:21,858 --> 00:02:23,898
+Her yolculuk, şehir için yeni bir veri.
+
