@@ -271,7 +271,7 @@ builders.veri=(sc)=>{
     cns.forEach((c,i)=>c.setAttribute('opacity',eo(prog(t,nt[i+1]-.2,.5))));
     [...el.querySelectorAll('.v-p .chip')].forEach((c,i)=>show(c,prog(t,e.konum+i*.4,.5),12));
     const down=t>=e.kesinti && t<e.geri;
-    el.querySelector('.yok').setAttribute('opacity',down?eo(prog(t,e.kesinti,.4)):1-eo(prog(t,e.geri,.4)));
+    el.querySelector('.yok').setAttribute('opacity',t<e.kesinti?0:down?eo(prog(t,e.kesinti,.4)):1-eo(prog(t,e.geri,.4)));
     cns[1].setAttribute('stroke',down?'#5a6a8f':'#2CA9E1'); cns[1].setAttribute('stroke-dasharray',down?'10 10':'none');
     show(el.querySelector('.v-b'),prog(t,e.kesinti,.5),10);
     const fill = t<e.kesinti?0 : t<e.geri? eo(prog(t,e.kesinti+.3,e.geri-e.kesinti-.3)) : 1-eo(prog(t,e.geri,1.2));
